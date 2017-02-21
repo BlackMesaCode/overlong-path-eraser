@@ -58,8 +58,8 @@ namespace OverlongPathEraser
 
                 if (userResponse == "DELETE")
                 {
-                    Console.WriteLine("Deletion successfull!");
                     DeleteDirectory(args[0]);
+                    Console.WriteLine("Deletion successfull!");
                 }
                 else
                 {
