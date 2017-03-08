@@ -27,7 +27,7 @@ namespace OverlongPathEraser
             _timer.Change(Timeout.Infinite, 200);
         }
 
-        public void Turn()
+        private void Turn()
         {
             switch (_state)
             {
