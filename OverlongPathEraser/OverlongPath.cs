@@ -20,31 +20,31 @@ namespace OverlongPathEraser
             this.FullPath = path;
         }
 
-        public OperationResult Validate()
+        public OperationResult<PathError> Validate()
         {
-            var errors = new List<string>();
+            var errors = new List<PathError>();
 
-            if (!IsValidPath(FullPath))
+            if (!PathExists(FullPath))
             {
-                errors.Add("Invalid argument: path to delete does not exist");
+                errors.Add(PathError.NotExisting);
             }
             else // we need to ensure FullPath is valid before executing further validations
             {
                 if (!PathIsFolder(FullPath))
-                    errors.Add("Invalid argument: path needs to point to a folder");
+                    errors.Add(PathError.IsNoFolder);
 
-                if (FolderIsRootFolder(FullPath))
-                    errors.Add("Invalid argument: path must not be a root folder / drive letter");
+                if (PathIsDriveLetter(FullPath))
+                    errors.Add(PathError.IsDriveLetter);
             }
 
             if (errors.Any())
-                return new OperationResult(errors);
+                return new OperationResult<PathError>(errors);
 
-            return new OperationResult(successMessage: "Path is valid");
+            return new OperationResult<PathError>(successMessage: "Path is valid");
         }
 
 
-        public OperationResult Erase()
+        public OperationResult<PathError> Erase()
         {
             var operationResult = Validate();
             if (operationResult.Success)
@@ -78,7 +78,7 @@ namespace OverlongPathEraser
                 emptyTempDirectory.Delete();
 
                 // update operationResult
-                operationResult = new OperationResult($"'{FullPath}' successfully erased.");
+                operationResult = new OperationResult<PathError>($"'{FullPath}' successfully erased.");
             }
             return operationResult;
         }
@@ -95,7 +95,7 @@ namespace OverlongPathEraser
         }
 
 
-        public bool IsValidPath(string path)
+        public bool PathExists(string path)
         {
             if (File.Exists(path) || Directory.Exists(path))
                 return true;
@@ -112,7 +112,7 @@ namespace OverlongPathEraser
         }
 
 
-        public bool FolderIsRootFolder(string path)
+        public bool PathIsDriveLetter(string path)
         {
             DirectoryInfo folder = new DirectoryInfo(path);
             if (folder.Parent == null || (Directory.GetDirectoryRoot(path) == path) || Regex.IsMatch(path, "^[A-Za-z]:$"))
