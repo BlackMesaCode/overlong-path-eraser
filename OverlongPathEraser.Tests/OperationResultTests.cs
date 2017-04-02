@@ -11,14 +11,16 @@ namespace OverlongPathEraser.Tests
         public void Report_GivenAListOfErrors_ShouldReturnAConcatedString()
         {
             // Arrange
-            var errors = new List<string>() { "404", "501" };
-            var result = new OperationResult(errors);
+            var errors = new List<PathError>() { PathError.IsDriveLetter, PathError.IsNoFolder};
+            var result = new OperationResult<PathError>(errors);
 
             // Act
             var report = result.Report();
 
             // Assert
-            Assert.AreEqual(report, "404" + Environment.NewLine + "501" + Environment.NewLine);
+            Assert.AreEqual(report, 
+                PathError.IsDriveLetter + Environment.NewLine + 
+                PathError.IsNoFolder + Environment.NewLine);
         }
     }
 }
