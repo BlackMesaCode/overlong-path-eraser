@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverlongPathEraser.Tests", "OverlongPathEraser.Tests\OverlongPathEraser.Tests.csproj", "{569A5BBA-01B4-4ADE-BB0B-23F17A0D373F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverlongPathEraserCore", "OverlongPathEraserCore\OverlongPathEraserCore.csproj", "{8312D8F6-EBB8-4551-B2C4-D37EB46A8991}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverlongPathEraser", "OverlongPathEraser\OverlongPathEraser.csproj", "{8312D8F6-EBB8-4551-B2C4-D37EB46A8991}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
