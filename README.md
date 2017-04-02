@@ -7,7 +7,7 @@ Ever run into the problem that you cant delete a folder because it exceeds Windo
 3. Navigate into the downloaded folder
 4. Execute OverlongPathEraser.exe and append the path to the folder you wish to delete: e.g. ```"OverlongPathEraser.exe D:\FolderToDelete"```
 
-**NOTE**: *OverlongPathEraser* can only delete a single folder. No multiple folders at once, no files and no whole harddrives.
+**NOTE**: *OverlongPathEraser* can only delete folders (no single files and also no whole harddrives).
 
 
 ## Protip:
