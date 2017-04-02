@@ -5,9 +5,9 @@ using System.Text;
 
 namespace OverlongPathEraser
 {
-    public sealed class OperationResult
+    public sealed class OperationResult<T>
     {
-        public OperationResult(List<string> errors)
+        public OperationResult(List<T> errors)
         {
             Errors = errors;
         }
@@ -19,7 +19,7 @@ namespace OverlongPathEraser
 
         public bool Success => (SuccessMessage != null);
         public string SuccessMessage { get; }
-        public List<string> Errors { get; }
+        public List<T> Errors { get; }
 
         public void ReportAlternative() => Errors.ForEach((error) => Console.WriteLine(error));
 
@@ -32,9 +32,9 @@ namespace OverlongPathEraser
             else
             {
                 var builder = new StringBuilder();
-                foreach (var errorMessage in Errors)
+                foreach (var error in Errors)
                 {
-                    builder.AppendLine(errorMessage);
+                    builder.AppendLine(error.ToString());
                 }
                 return builder.ToString();
             }
