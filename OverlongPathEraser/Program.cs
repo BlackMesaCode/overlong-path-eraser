@@ -20,10 +20,10 @@ namespace OverlongPathEraser
 
                 if (ConfirmDeletion(path))
                 {
-                    var erasureResult = overlongPath.Erase();
+                    var operationResult = overlongPath.Erase();
 
                     Console.Write(Environment.NewLine);
-                    Console.WriteLine(erasureResult.Report());
+                    Console.WriteLine(operationResult.Report());
                     Console.Write(Environment.NewLine);
                 }
             }
